@@ -17,5 +17,9 @@ for (x,y,w,h) in faces:
         cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(0,255,0),2)
 
 cv2.imshow('img',img)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+input=cv2.waitKey(0)&0xFF
+if input == ord('q'):         # wait for 'q' key to exit
+    cv2.destroyAllWindows()
+elif input == ord('s'): # wait for 's' key to save and exit
+    cv2.imwrite('faces.png',img)
+    cv2.destroyAllWindows()
